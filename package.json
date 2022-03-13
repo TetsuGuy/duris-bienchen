@@ -7,12 +7,13 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "vuecli-lint": "vue-cli-service lint",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "vuecli-lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@paypal/paypal-js": "^5.0.2",
     "bulma": "^0.9.3",
+    "register-service-worker": "^1.7.2",
     "twitter-widgets": "^2.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
