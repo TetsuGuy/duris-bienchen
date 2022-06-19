@@ -25,11 +25,24 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "news" */ "../views/NewsView.vue"),
   },
+  {
+    path: "/donate",
+    name: "DonateView",
+    component: () =>
+      import(/* webpackChunkName: "donate" */ "../views/DonateView.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+});
+
+router.beforeEach((to) => {
+  const iframes = document.querySelectorAll("iframe");
+  iframes.forEach((iframe) => {
+    iframe.style.display = to.name === "NewsView" ? "block" : "none";
+  });
 });
 
 export default router;

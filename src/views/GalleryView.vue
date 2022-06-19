@@ -60,7 +60,7 @@ export default {
       },
       {
         url: require("@/assets/photo3.webp"),
-        title: "Die neuen Bienenkästen",
+        title: "Biene im Flug",
         text: "",
       },
       {

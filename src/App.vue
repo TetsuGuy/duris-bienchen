@@ -13,16 +13,14 @@
       <router-link to="/news">
         <div class="nav-btn"><i class="fa fa-newspaper" />Neues</div>
       </router-link>
-      <a href="#">
-        <div class="nav-btn nav-btn--donate">
-          <i class="fa-solid fa-hand-holding-heart" />Spende<donation-button
-            id="btn-paypal"
-          />
+      <router-link to="/donate">
+        <div class="nav-btn">
+          <i class="fa-solid fa-hand-holding-heart" />Spende
         </div>
-      </a>
+      </router-link>
     </nav>
     <router-view />
-    <twitter-timeline />
+    <twitter-timeline v-show="false" />
     <modal-view :value="hasNewMessages" @input="hasNewMessages = $event">
       ich habe
       <router-link @click="hasNewMessages = false" to="/news"
@@ -36,7 +34,6 @@
 </template>
 
 <script>
-import DonationButton from "./components/DonationButton.vue";
 import TwitterTimeline from "./components/TwitterTimeline.vue";
 import ModalView from "./components/ModalView.vue";
 import { getLatestTweetId } from "./api";
@@ -46,7 +43,6 @@ export default {
   }),
   components: {
     ModalView,
-    DonationButton,
     TwitterTimeline,
   },
   async mounted() {
@@ -78,17 +74,21 @@ body {
 #main {
   width: 100%;
   height: 100%;
+  overflow: auto;
   > .view {
     height: calc(100vh - $heigth-navbar);
     overflow-y: auto;
   }
 }
-
 nav {
   height: $heigth-navbar;
   background: yellow;
   display: inline-flex;
   width: 100%;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  left: 0;
   border-bottom: 1px solid lightgray;
   .nav-btn {
     height: 100%;
@@ -97,15 +97,6 @@ nav {
     i {
       width: 100%;
       font-size: x-large;
-    }
-    &--donate {
-      color: #485fc7;
-      position: relative;
-      #btn-paypal {
-        position: absolute;
-        top: 0;
-        opacity: 0;
-      }
     }
   }
   a {
