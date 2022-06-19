@@ -23,16 +23,41 @@
     </nav>
     <router-view />
     <twitter-timeline />
+    <modal-view :value="hasNewMessages" @input="hasNewMessages = $event">
+      ich habe
+      <router-link @click="hasNewMessages = false" to="/news"
+        ><span style="text-decoration: underline"
+          >Neuigkeiten</span
+        ></router-link
+      >
+      für dich! 🐝
+    </modal-view>
   </div>
 </template>
 
 <script>
 import DonationButton from "./components/DonationButton.vue";
 import TwitterTimeline from "./components/TwitterTimeline.vue";
+import ModalView from "./components/ModalView.vue";
+import { getLatestTweetId } from "./api";
 export default {
+  data: () => ({
+    hasNewMessages: false,
+  }),
   components: {
+    ModalView,
     DonationButton,
     TwitterTimeline,
+  },
+  async mounted() {
+    const id = await getLatestTweetId();
+    if (id) {
+      const storedId = localStorage.getItem("latestTweetId");
+      if (id !== storedId) {
+        localStorage.setItem("latestTweetId", id);
+        this.hasNewMessages = true;
+      }
+    }
   },
 };
 </script>

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@paypal/paypal-js": "^5.0.2",
+    "axios": "^0.26.1",
     "bulma": "^0.9.3",
     "register-service-worker": "^1.7.2",
     "twitter-widgets": "^2.0.0",

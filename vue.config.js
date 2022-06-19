@@ -1,10 +1,11 @@
 const { defineConfig } = require("@vue/cli-service");
+
 module.exports = defineConfig({
   transpileDependencies: true,
   productionSourceMap: false,
   pwa: {
-    assetsVersion: "0.1.0",
-    themeColor: "#ffedb8",
+    assetsVersion: "0.1.1",
+    themeColor: "#363636",
     iconPaths: {
       faviconSVG: "img/icons/favicon.svg",
       favicon32: "img/icons/favicon32.png",
@@ -16,22 +17,22 @@ module.exports = defineConfig({
     manifestOptions: {
       name: "Bienenzucht W.Durek",
       short_name: "Duris Bienchen",
-      theme_color: "#ffedb8",
+      theme_color: "#363636",
       icons: [
         {
-          src: "./favicon.svg",
-          sizes: "512x512",
-          type: "image/svg+xml",
-          purpose: "any maskable",
+          src: "./img/icons/android/android-launchericon-144-144.png",
+          sizes: "144x144",
+          type: "image/png",
+          purpose: "any",
         },
         {
-          src: "./img/icons/android-launchericon-192-192.png",
+          src: "./img/icons/android/android-launchericon-192-192.png",
           sizes: "192x192",
           type: "image/png",
           purpose: "maskable",
         },
         {
-          src: "./img/icons/android-launchericon-512-512.png",
+          src: "./img/icons/android/android-launchericon-512-512.png",
           sizes: "512x512",
           type: "image/png",
           purpose: "maskable",
